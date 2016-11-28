@@ -22,6 +22,14 @@
         NSLog(@"js parse%@",name);
     };
     [context evaluateScript:@"nslog('wanghao')"];
+    NSLog(@"%@",context.virtualMachine);
+    
+    JSVirtualMachine *jsvm =[[JSVirtualMachine alloc] init];
+    JSContext *ctxt = [[JSContext alloc] initWithVirtualMachine:jsvm];
+    [ctxt evaluateScript:@"var arr = [1,2,3]"];
+    JSValue *value = ctxt[@"arr"];
+    
+    NSLog(@"jsvalue%@",value);
     // Do any additional setup after loading the view, typically from a nib.
 }
 
